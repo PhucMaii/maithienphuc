@@ -1,5 +1,5 @@
-import { Button, Grid, TextField } from '@mui/material'
-import styled from 'styled-components'
+import { Button, Grid, TextField } from '@mui/material';
+import styled from 'styled-components';
 
 export const ButtonStyled = styled(Button)`
     padding: 8px 40px !important;
