@@ -26,8 +26,8 @@ const tabs: Tab[] = [
 
 export const Navbar: FC = () => {
     const [currentTab, setCurrentTab] = useState<Tab>({
-        name: '',
-        path: ''
+        name: 'Home',
+        path: '/'
     });
     const navigate = useNavigate();
     const location = useLocation();
