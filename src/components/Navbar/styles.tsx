@@ -1,10 +1,19 @@
 import styled from 'styled-components';
-import { Box, BoxProps } from '@mui/material';
+import { AppBar, Box, BoxProps, Drawer, Fab } from '@mui/material';
 import { FC } from 'react';
 
 interface NavLinkProps extends BoxProps {
     $isCurPath: boolean;
 }
+
+export const AppBarStyled = styled(AppBar)`
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    overflow-x: hidden !important;
+`
+
+export const DrawerStyled = styled(Drawer)`
+    width: 30% !important;
+`
 
 export const NavLink: FC<NavLinkProps> = styled(Box)<NavLinkProps>`
     padding: 8px 15px;
@@ -17,4 +26,13 @@ export const NavLink: FC<NavLinkProps> = styled(Box)<NavLinkProps>`
         color: #042B44;
         cursor: pointer;
     }
+`
+
+export const StyledFab = styled(Fab)`
+    position: 'absolute',
+    zIndex: 1,
+    top: -30,
+    left: 0,
+    right: 0,
+    margin: '0 auto',
 `

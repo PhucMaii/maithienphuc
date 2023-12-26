@@ -1,20 +1,22 @@
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Grid, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React, { FC } from 'react'
 import { Hobbies } from '../../components/Hobbies/Hobbies'
 import { FadeIn } from '../../HOC/FadeIn'
 import { AboutMeContainer, ImageStyle } from './styles'
 
 export const AboutPage: FC = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   return (
     <FadeIn>
-      <Grid container px={8} columnSpacing={4}>
-          <Grid item xs={12} md={5}>
-            <ImageStyle src="https://scontent-sea1-1.xx.fbcdn.net/v/t39.30808-6/344756849_780270453653257_5098434844172212863_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=sOOHvPksC-UAX9ajWkQ&_nc_ht=scontent-sea1-1.xx&oh=00_AfAEZ9E36pjmVW8vbK5fHwIobUFEBnyeGc1yCjATntEsUg&oe=658800EB"/>
+      <Grid container px={isSmallScreen ? 4 : 8} columnSpacing={isSmallScreen ? 0 : 4}>
+          <Grid item xs={12} md={4}>
+            <ImageStyle src="/aboutPageImg.png"/>
           </Grid>
-          <AboutMeContainer item xs={12} md={7}>
+          <AboutMeContainer item xs={12} md={8}>
             <Box display="flex" flexDirection="column" gap={1}>
               <Typography variant="h4" fontWeight="bold">About me</Typography>
-              <Box display="flex" gap={2}>
+              <Box display="flex" gap={2} alignItems="center">
                 <Typography sx={{paddingY: '5px'}} variant="subtitle1">My hobbies:</Typography>
                 <Hobbies />
               </Box>

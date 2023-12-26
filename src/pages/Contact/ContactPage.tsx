@@ -69,7 +69,7 @@ export const ContactPage: FC = () => {
     }
   return (
     <FadeIn>
-        <Box display="flex" flexDirection="column" gap={2} justifyContent="center">
+        <Box sx={{width: '100%'}} display="flex" flexDirection="column" gap={2} justifyContent="center">
         <Snackbar 
             open={notification.on} 
             autoHideDuration={6000} 
@@ -85,15 +85,15 @@ export const ContactPage: FC = () => {
         </Snackbar>
             <Typography textAlign="center" variant="h4" fontWeight="bold">Contact</Typography>
             <Grid container my={4}>
-                <ContactField item xs={4} textAlign="center">
+                <ContactField item xs={12} md={4} textAlign="center">
                     <Typography variant="h6" fontWeight="light">Phone Number</Typography>
                     <Typography variant="h5" fontWeight="bold" mt={1}>+1 (431) 289 - 0132</Typography>
                 </ContactField>
-                <ContactField item xs={4} textAlign="center">
+                <ContactField item xs={12} md={4} textAlign="center">
                     <Typography variant="h6" fontWeight="light">Email</Typography>
                     <Typography variant="h5" fontWeight="bold" mt={1}>maithienphuc0102@gmail.com</Typography>
                 </ContactField>
-                <ContactField item xs={4} textAlign="center">
+                <ContactField item xs={12} md={4} textAlign="center">
                     <Typography variant="h6">Social Media</Typography>
                     <Box display="flex" alignItems="center" gap={2} justifyContent="center" mt={1}>
                         <GitHubIcon />
@@ -105,7 +105,7 @@ export const ContactPage: FC = () => {
             </Grid>
             <Typography textAlign="center" variant="h4" fontWeight="bold" mb={4}>Reach Out</Typography>
             <Grid container rowGap={4} columnSpacing={4} px={8}>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                     <TextFieldStyled 
                         required
                         label="First Name"
@@ -116,7 +116,7 @@ export const ContactPage: FC = () => {
                         }}
                     />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                     <TextFieldStyled 
                         required
                         label="Last Name"
@@ -127,7 +127,7 @@ export const ContactPage: FC = () => {
                         }}
                     />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                     <TextFieldStyled 
                         required
                         label="Email"
@@ -139,7 +139,7 @@ export const ContactPage: FC = () => {
                         }}
                     />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                     <TextFieldStyled 
                         label="Phone Number"
                         placeholder="Enter your phone number..."
@@ -166,6 +166,7 @@ export const ContactPage: FC = () => {
                     <ButtonStyled
                         variant="contained"
                         onClick={handleSubmit}
+                        fullWidth
                     >
                         Submit
                     </ButtonStyled>

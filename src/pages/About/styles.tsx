@@ -13,4 +13,7 @@ export const ImageStyle = styled.img`
     width: 98%;
     height: 500px;
     border-radius: 20px;
+    @media screen and (max-width: 650px) {
+        width: 100%;
+    }
 `
