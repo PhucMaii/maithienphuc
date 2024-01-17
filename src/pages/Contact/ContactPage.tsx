@@ -2,8 +2,6 @@ import { Alert, AlertColor, Box, Grid, Snackbar, Typography } from '@mui/materia
 import React, { ChangeEvent, FC, useState } from 'react';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
 import { ButtonStyled, ContactField, TextFieldStyled } from './styles';
 import { FadeIn } from '../../HOC/FadeIn';
 import { addDoc, collection } from 'firebase/firestore';
@@ -95,11 +93,9 @@ export const ContactPage: FC = () => {
                 </ContactField>
                 <ContactField item xs={12} md={4} textAlign="center">
                     <Typography variant="h6">Social Media</Typography>
-                    <Box display="flex" alignItems="center" gap={2} justifyContent="center" mt={1}>
-                        <GitHubIcon />
-                        <LinkedInIcon />
-                        <FacebookIcon />
-                        <InstagramIcon />
+                    <Box display="flex" alignItems="center" gap={1} justifyContent="center" mt={1}>
+                        <a href="https://github.com/PhucMaii?tab=overview&from=2023-12-01&to=2023-12-31" style={{color: "white"}}></a><GitHubIcon />
+                        <a href="https://www.linkedin.com/in/phuc-bin-mai-5ba164254/" style={{color: "white"}}></a><LinkedInIcon />
                     </Box>
                 </ContactField>
             </Grid>

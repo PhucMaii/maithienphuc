@@ -8,6 +8,7 @@ import {
     useTheme 
 } from "@mui/material";
 import { HomePageContainer, ImageStyle } from "./styles";
+import DownloadIcon from '@mui/icons-material/Download';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Technologies } from "../../components/Technologies/Technologies";
@@ -29,7 +30,7 @@ export const HomePage = () => {
             rowGap={2}
         >
             <Grid item xs={12} md={6}>
-                <Box display="flex" flexDirection="column" gap={1}>
+                <Box display="flex" flexDirection="column" gap={2}>
                     <Typography 
                         variant="h2" 
                         fontWeight="bold"
@@ -54,9 +55,9 @@ export const HomePage = () => {
                         <Button 
                             variant="contained"
                             color="info"
-                            sx={{width: isSmallScreen ? '100%' : 'fit-content'}}
+                            sx={{width: isSmallScreen ? '100%' : 'fit-content', textAlign: "center"}}
                         >
-                            Resume
+                            Resume <DownloadIcon /> 
                         </Button>
 
                     </a>
@@ -66,9 +67,10 @@ export const HomePage = () => {
                         justifyContent={isSmallScreen ? "center" : ""}
                         gap={1}
                     >
-                        <Typography variant="h6">My Profiles: </Typography>
-                        <GitHubIcon />
-                        <LinkedInIcon />
+                        <Typography variant="h6">My profiles: </Typography>
+                        <a style={{color: 'white'}} href="https://github.com/PhucMaii?tab=overview&from=2023-12-01&to=2023-12-31"><GitHubIcon /></a>
+                        <a style={{color: 'white'}} href="https://www.linkedin.com/in/phuc-bin-mai-5ba164254/"><LinkedInIcon /></a>
+                        
                      </Box>
                 </Box>
             </Grid>
