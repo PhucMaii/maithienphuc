@@ -14,10 +14,12 @@ import { Technologies } from "../../components/Technologies/Technologies";
 import { SkillSet } from "../../components/SkillSet/SkillSet";
 import { Projects } from "../../components/Projects/Projects";
 import { FadeIn } from '../../HOC/FadeIn';
+import resume from '../../assets/MaitThienPhuc(Resume).pdf';
 
 export const HomePage = () => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <FadeIn>
         <HomePageContainer 
@@ -48,13 +50,16 @@ export const HomePage = () => {
                         As a Full Stack Developer, I specialize in creating end-to-end solutions
                         with a focus on user-centric design and scalable architecture.
                     </Typography>
-                    <Button 
-                        variant="contained"
-                        color="info"
-                        sx={{width: isSmallScreen ? '100%' : 'fit-content'}}
-                    >
-                        Resume
-                    </Button>
+                    <a href={resume} download="Resume">
+                        <Button 
+                            variant="contained"
+                            color="info"
+                            sx={{width: isSmallScreen ? '100%' : 'fit-content'}}
+                        >
+                            Resume
+                        </Button>
+
+                    </a>
                     <Box 
                         display="flex" 
                         alignItems="center" 
