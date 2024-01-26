@@ -2,7 +2,7 @@ import { Grid } from '@mui/material';
 import styled from 'styled-components';
 
 export const ImageStyle = styled.img`
-    width: 380px;
+    width: 100%;
     height: 500px;
     border-radius: 20px;
     @media screen and (max-width: 650px) {

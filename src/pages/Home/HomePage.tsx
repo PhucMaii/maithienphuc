@@ -69,7 +69,7 @@ export const HomePage = () => {
             </Grid>
             <Grid item xs={12} md={6} textAlign="center">
                 <ImageStyle 
-                    src="/homePageImg.png"
+                    src="/homePageImg.JPG"
                 />
             </Grid>
             <Grid item xs={12}>
