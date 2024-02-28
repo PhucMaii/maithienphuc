@@ -10,10 +10,10 @@ export const AboutPage: FC = () => {
   return (
     <FadeIn>
       <Grid container px={isSmallScreen ? 4 : 8} columnSpacing={isSmallScreen ? 0 : 4}>
-          <Grid item xs={12} md={4}>
-            <ImageStyle src="/aboutPageImg.png"/>
+          <Grid item xs={12} md={6}>
+            <ImageStyle src="/aboutPageImg.JPG"/>
           </Grid>
-          <AboutMeContainer item xs={12} md={8}>
+          <AboutMeContainer item xs={12} md={6}>
             <Box display="flex" flexDirection="column" gap={1}>
               <Typography variant="h4" fontWeight="bold">About me</Typography>
               <Box display="flex" gap={2} alignItems="center">
