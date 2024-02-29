@@ -7,18 +7,6 @@ import { Tech, TechCard } from './TechCard';
 export const Technologies: FC = () => {
   const technologies: Tech[] = [
     {
-      icon: "/techIcons/aws.jpeg",
-      name: "AWS",
-    },
-    {
-      icon: "/techIcons/expressjs.png",
-      name: "ExpressJS",
-    },
-    {
-      icon: "/techIcons/javascript.png",
-      name: "Javascript",
-    },
-    {
       icon: "/techIcons/nextjs.png",
       name: "NextJS",
     },
@@ -33,6 +21,34 @@ export const Technologies: FC = () => {
     {
       icon: "/techIcons/typescript.png",
       name: "Typescript",
+    },
+    {
+      icon: "/techIcons/aws.jpeg",
+      name: "AWS",
+    },
+    {
+      icon: "/techIcons/expressjs.png",
+      name: "ExpressJS",
+    },
+    {
+      icon: "/techIcons/javascript.png",
+      name: "Javascript",
+    },
+    {
+      icon: "/techIcons/html.png",
+      name: "HTML",
+    },
+    {
+      icon: "/techIcons/css.png",
+      name: "CSS",
+    },
+    {
+      icon: "/techIcons/mongodb.png",
+      name: "MongoDB",
+    },
+    {
+      icon: "/techIcons/mysql.png",
+      name: "MySQL",
     },
   ];
   return (
