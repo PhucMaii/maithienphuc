@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 import { Hobbies } from '../../components/Hobbies/Hobbies'
 import { FadeIn } from '../../HOC/FadeIn'
 import { AboutMeContainer, ImageStyle } from './styles'
+import Experiences from '../../components/Experiences'
 
 export const AboutPage: FC = () => {
   const theme = useTheme();
@@ -32,6 +33,19 @@ export const AboutPage: FC = () => {
               </Typography>
             </Box>
           </AboutMeContainer>
+          <Grid item xs={12}>
+          <Box>
+            <Typography
+              variant="h4"
+              textAlign="center"
+              fontWeight="bold"
+              mt={4}
+            >
+              My Journey
+            </Typography>
+            <Experiences />
+          </Box>
+        </Grid>
       </Grid>
     </FadeIn>
   )
