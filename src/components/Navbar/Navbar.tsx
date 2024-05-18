@@ -1,167 +1,146 @@
-import React, { FC, ReactNode, useEffect, useState } from 'react';
-import { 
-    AppBar, 
-    Box, 
-    Grid, 
-    IconButton, 
-    Toolbar, 
-    Typography, 
-    useMediaQuery, 
-    useTheme 
-} from '@mui/material'
-import { NavLink } from './styles';
-import HomeIcon from '@mui/icons-material/Home';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
-import AssignmentLateIcon from '@mui/icons-material/AssignmentLate';
-import InfoIcon from '@mui/icons-material/Info';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import ContactPageIcon from '@mui/icons-material/ContactPage';
-import ContactPageOutlinedIcon from '@mui/icons-material/ContactPageOutlined';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { FC, ReactNode, useEffect, useState } from "react";
+import {
+  BottomNavigation,
+  BottomNavigationAction,
+  Box,
+  Grid,
+  Paper,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import { NavLink } from "./styles";
+import HomeIcon from "@mui/icons-material/Home";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import AssignmentOutlinedIcon from "@mui/icons-material/AssignmentOutlined";
+import AssignmentLateIcon from "@mui/icons-material/AssignmentLate";
+import InfoIcon from "@mui/icons-material/Info";
+import ContactPageIcon from "@mui/icons-material/ContactPage";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface Tab {
-    name: string;
-    path?: string;
-    icon: ReactNode;
-    curTabIcon: ReactNode;
+  name: string;
+  path?: string;
+  icon: ReactNode;
+  curTabIcon: ReactNode;
 }
 
 const tabs: Tab[] = [
-    {
-        name: 'Home',
-        path: '/',
-        icon: <HomeOutlinedIcon fontSize='large' />,
-        curTabIcon: <HomeIcon fontSize='large' />
-    },
-    {
-        name: 'Projects',
-        icon: <AssignmentOutlinedIcon fontSize='large' />,
-        curTabIcon: <AssignmentLateIcon fontSize='large' />  
-    },
-    {
-        name: 'About',
-        path: '/about',
-        icon: <InfoOutlinedIcon fontSize='large'/>,
-        curTabIcon: <InfoIcon fontSize='large' />
-    },
-    {
-        name: 'Contact',
-        path: '/contact',
-        icon: <ContactPageOutlinedIcon fontSize='large' />,
-        curTabIcon: <ContactPageIcon fontSize='large' />
-    },
+  {
+    name: "Home",
+    path: "/",
+    icon: <HomeIcon />,
+    curTabIcon: <HomeIcon />,
+  },
+  {
+    name: "Projects",
+    icon: <AssignmentOutlinedIcon />,
+    curTabIcon: <AssignmentLateIcon />,
+  },
+  {
+    name: "About",
+    path: "/about",
+    icon: <InfoIcon />,
+    curTabIcon: <InfoIcon />,
+  },
+  {
+    name: "Contact",
+    path: "/contact",
+    icon: <ContactPageIcon />,
+    curTabIcon: <ContactPageIcon />,
+  },
 ];
 
 export const Navbar: FC = () => {
-    const [currentTab, setCurrentTab] = useState<Tab>({
-        name: 'Home',
-        path: '/',
-        icon: <HomeOutlinedIcon />,
-        curTabIcon: <HomeIcon />
+  const [currentTab, setCurrentTab] = useState<Tab>({
+    name: "Home",
+    path: "/",
+    icon: <HomeOutlinedIcon />,
+    curTabIcon: <HomeIcon />,
+  });
+  const [tabIndex, setTabIndex] = useState<number>(0);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const pathname = location.pathname;
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+  useEffect(() => {
+    const currTab: Tab | undefined = tabs.find((tab) => {
+      return tab.path === pathname;
     });
-    const navigate = useNavigate();
-    const location = useLocation();
-    const pathname = location.pathname;
-    const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-
-    useEffect(() => {
-        const currTab: Tab | undefined = tabs.find((tab) => {
-            return tab.path === pathname;
-        });
-        if(currTab) {
-            setCurrentTab(currTab);
-        }
-    }, []);
-
-    const scrollToProjects = () => {
-        if(currentTab.path !== '/') {
-            navigate('/');
-        }
-        const projectsSection = document.getElementById('Projects');
-        if(projectsSection) {
-            projectsSection.scrollIntoView({ behavior: 'smooth' });
-        }
+    if (currTab) {
+      setCurrentTab(currTab);
     }
+  }, []);
+
+  const scrollToProjects = () => {
+    if (currentTab.path !== "/") {
+      navigate("/");
+    }
+    const projectsSection = document.getElementById("Projects");
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  console.log(currentTab)
 
   return (
     <Grid container m={isSmallScreen ? 0 : 4}>
-        {
-            isSmallScreen ? (
-                <AppBar 
-                    position="fixed"  
-                    sx={{ 
-                        width: '100%', 
-                        top: 'auto', 
-                        bottom: 0, 
-                        backgroundColor: '#275D80',
-                        boxShadow: 'rgb(38, 57, 77) 0px 20px 30px -10px;' 
-                    }}
-                >
-                    <Toolbar sx={{width: '100%'}}>
-                        <Grid container>
-                            {
-                                tabs && tabs.map((tab, index) => {
-                                    if(tab.name === 'Projects') {
-                                        return;
-                                    }
-                                    return (
-                                        <Grid item xs={4} textAlign="center" key={index}>
-                                            <IconButton 
-                                                id={tab.name}
-                                                color="inherit" 
-                                                aria-label="open drawer"
-                                                onClick={() => {
-                                                    setCurrentTab(tab);
-                                                    navigate(tab.path ? tab.path : '/');
-                                                }}
-                                            >
-                                                {
-                                                    currentTab === tab ? tab.curTabIcon : tab.icon
-                                                }
-                                            </IconButton>
-                                        </Grid>
-                                    )
-                                })
-                            }
-                        </Grid>
-                    </Toolbar>
-              </AppBar>
-            ) : (
-            <Grid item xs={4}>
-                <Typography variant="h4">BIN</Typography>
-            </Grid>
-            )
-        }
+      {isSmallScreen ? (
+        <Paper
+          sx={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 100, backgroundColor: '#021927 !important' }}
+          elevation={3}
+        >
+          <BottomNavigation
+            showLabels
+            value={tabIndex}
+            onChange={(event, newValue) => {
+                setTabIndex(newValue);
+              setCurrentTab(tabs[newValue]);
+            }}
+            sx={{ width: "100vw !important", backgroundColor: '#021927 !important' }}
+          >
+            {tabs &&
+              tabs.map((tab) => {
+                return (
+                  <BottomNavigationAction sx={{color: 'white', '.css-75i2ki-MuiButtonBase-root-MuiBottomNavigationAction-root.Mui-selected':{color: 'blue !important'}}} label={tab.name} icon={tab.icon} />
+                );
+              })}
+          </BottomNavigation>
+        </Paper>
+      ) : (
+        <Grid item xs={4}>
+          <Typography variant="h4">BIN</Typography>
+        </Grid>
+      )}
 
-        {
-            !isSmallScreen && 
-                <Grid item xs={8} textAlign="left">
-                    <Box display="flex" justifyContent="left" gap={6}>
-                        {
-                            tabs && tabs.map((tab, index) => {
-                                return (
-                                    <NavLink 
-                                        $isCurPath={currentTab.name === tab.name} 
-                                        key={index} 
-                                        onClick={() => {
-                                            setCurrentTab(tab);
-                                            if(!tab.path) {
-                                                scrollToProjects();
-                                                return;
-                                            }
-                                            navigate(tab.path);
-                                        }}
-                                    >
-                                        <Typography variant="h6">{tab.name}</Typography>
-                                    </NavLink>
-                                )
-                            })
-                        }
-                    </Box>
-                </Grid>
-        }
+      {!isSmallScreen && (
+        <Grid item>
+          <Box display="flex" justifyContent="left" gap={6}>
+            {tabs &&
+              tabs.map((tab, index) => {
+                return (
+                  <NavLink
+                    $isCurPath={currentTab.name === tab.name}
+                    key={index}
+                    onClick={() => {
+                      setCurrentTab(tab);
+                      if (!tab.path) {
+                        scrollToProjects();
+                        return;
+                      }
+                      navigate(tab.path);
+                    }}
+                  >
+                    <Typography variant="h6">{tab.name}</Typography>
+                  </NavLink>
+                );
+              })}
+          </Box>
+        </Grid>
+      )}
     </Grid>
-  )
-}
+  );
+};

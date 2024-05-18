@@ -18,12 +18,12 @@ export const DrawerStyled = styled(Drawer)`
 export const NavLink: FC<NavLinkProps> = styled(Box)<NavLinkProps>`
     padding: 8px 15px;
     border-radius: 10px;
-    background-color: ${ props => props.$isCurPath ? 'white' : '#042B44' };
-    color: ${props => props.$isCurPath ? '#042B44' : 'white'};
+    background-color: ${ props => props.$isCurPath ? 'white' : '#021927' };
+    color: ${props => props.$isCurPath ? '#021927' : 'white'};
     transition: background-color 0.3s, color 0.3s;
     &:hover {
         background-color: white;
-        color: #042B44;
+        color: #021927;
         cursor: pointer;
     }
 `
