@@ -15,7 +15,7 @@ import { Technologies } from "../../components/Technologies/Technologies";
 import { SkillSet } from "../../components/SkillSet/SkillSet";
 import { Projects } from "../../components/Projects/Projects";
 import { FadeIn } from "../../HOC/FadeIn";
-import resume from "../../assets/MaitThienPhuc(Resume).pdf";
+import resume from "../../assets/MaiThienPhuc(Resume).pdf";
 
 export const HomePage = () => {
   const theme = useTheme();

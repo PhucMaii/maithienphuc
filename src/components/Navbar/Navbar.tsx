@@ -72,6 +72,7 @@ export const Navbar: FC = () => {
     if (currTab) {
       setCurrentTab(currTab);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const scrollToProjects = () => {
@@ -96,7 +97,7 @@ export const Navbar: FC = () => {
           <BottomNavigation
             showLabels
             value={tabIndex}
-            onChange={(event, newValue) => {
+            onChange={(_event, newValue) => {
                 setTabIndex(newValue);
               setCurrentTab(tabs[newValue]);
             }}

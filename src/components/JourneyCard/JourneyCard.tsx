@@ -2,7 +2,7 @@ import React from 'react';
 import { CardContainer } from './styles';
 import { Box, Typography } from '@mui/material';
 
-interface IJourneyProps {
+export interface IJourneyProps {
   title: string;
   subtitle: string;
   period: string;
@@ -27,18 +27,22 @@ export default function JourneyCard({
       gap={1}
     >
       <Box display="flex" alignItems="center" justifyContent="space-between">
-        <Typography variant="h6">{title}</Typography>
+        <Typography variant="h6" fontWeight="bold">{title}</Typography>
         <Typography variant="body1">{period}</Typography>
       </Box>
       <Typography textAlign="left" variant="body2">{subtitle}</Typography>
       <Typography textAlign="left" variant="body2">{description}</Typography>
-      {
-        highlights && highlights.map((highlight: string) => {
-          return (
-            <Typography fontWeight="bold" variant="body1">{highlight}</Typography>
-          )
-        })
-      }
+      <ul>
+        {
+          highlights && highlights.map((highlight: string) => {
+            return (
+              <li>
+                <Typography textAlign="left" fontWeight="bold" variant="body1">{highlight}</Typography>
+              </li>
+            )
+          })
+        }
+      </ul>
     </CardContainer>
   );
 }
