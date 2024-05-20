@@ -72,6 +72,7 @@ export const Navbar: FC = () => {
     if (currTab) {
       setCurrentTab(currTab);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const scrollToProjects = () => {
@@ -84,28 +85,50 @@ export const Navbar: FC = () => {
     }
   };
 
-  console.log(currentTab)
-
   return (
     <Grid container m={isSmallScreen ? 0 : 4}>
       {isSmallScreen ? (
         <Paper
-          sx={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 100, backgroundColor: '#021927 !important' }}
+          sx={{
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: 100,
+            backgroundColor: "#021927 !important",
+          }}
           elevation={3}
         >
           <BottomNavigation
             showLabels
             value={tabIndex}
-            onChange={(event, newValue) => {
-                setTabIndex(newValue);
-              setCurrentTab(tabs[newValue]);
+            onChange={(_event, newValue) => {
+              setTabIndex(newValue);
+              const selectedTab = tabs[newValue];
+              setCurrentTab(selectedTab);
+              if (selectedTab.path) {
+                navigate(selectedTab.path);
+              } else {
+                scrollToProjects();
+              }
             }}
-            sx={{ width: "100vw !important", backgroundColor: '#021927 !important' }}
+            sx={{
+              width: "100vw !important",
+              backgroundColor: "#021927 !important",
+            }}
           >
             {tabs &&
               tabs.map((tab) => {
                 return (
-                  <BottomNavigationAction sx={{color: 'white', '.css-75i2ki-MuiButtonBase-root-MuiBottomNavigationAction-root.Mui-selected':{color: 'blue !important'}}} label={tab.name} icon={tab.icon} />
+                  <BottomNavigationAction
+                    sx={{
+                      color: "white",
+                      ".css-75i2ki-MuiButtonBase-root-MuiBottomNavigationAction-root.Mui-selected":
+                        { color: "blue !important" },
+                    }}
+                    label={tab.name}
+                    icon={tab.icon}
+                  />
                 );
               })}
           </BottomNavigation>
