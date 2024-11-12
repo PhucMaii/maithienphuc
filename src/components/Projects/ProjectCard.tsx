@@ -36,13 +36,14 @@ export const ProjectCard: FC<CardProps> = ({proj}) => {
                 justifyContent="center" 
                 $isHovered={isImgHover}
             >
-                <Button 
+                {proj.githubLink === 'private' ? (<>
+                    <Button variant="contained">Sorry Github Link is Private</Button></>) : <Button 
                     variant="contained"
                     color="info"
                     onClick={() => window.location.href = proj.githubLink}
                     >
                     Github Link
-                </Button>
+                </Button>}
                     {
                         proj.deploymentLink && (
                             <Button 
